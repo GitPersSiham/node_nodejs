@@ -1,2 +1,3 @@
-export * as get from './get';
-export * as put from './put';
+export * as get from '@/controller/brand/get';
+
+export * as put from '@/controller/brand/put';

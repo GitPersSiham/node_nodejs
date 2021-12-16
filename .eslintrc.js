@@ -1,78 +1,41 @@
-const { join } = require('path');
-
 module.exports = {
+  root: true,
   env: {
-    es6: true,
+    es2021: true,
     node: true,
+    browser: true,
   },
-  extends: [
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:prettier/recommended',
-  ],
-  parser: '@babel/eslint-parser',
-  parserOptions: {
-    babelOptions: {
-      configFile: join(__dirname, '.babelrc'),
-    },
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      spread: true,
-    },
-    ecmaVersion: 2020,
-    sourceType: 'module',
-  },
-  plugins: ['import', 'json-format', 'prettier'],
   rules: {
-    'import/no-unresolved': 'off',
-    'import/order': [
-      'error',
-      {
-        alphabetize: {
-          caseInsensitive: true,
-          order: 'asc',
-        },
-        groups: [
-          'builtin',
-          ['external', 'object', 'unknown'],
-          'internal',
-          ['parent', 'sibling'],
-          'index',
-        ],
-        'newlines-between': 'always',
-        pathGroups: [
-          {
-            group: 'internal',
-            pattern: '@pdbnode',
-          },
-          {
-            group: 'index',
-            pattern: '@domain/**',
-          },
-          {
-            group: 'index',
-            pattern: '@infrastructure/**',
-          },
-          {
-            group: 'index',
-            pattern: '@interface/**',
-          },
-        ],
-      },
-    ],
-    'prettier/prettier': 'error',
-    'sort-keys': [
-      'error',
-      'asc',
-      {
-        natural: true,
-      },
-    ],
+    'import/prefer-default-export': 'off',
   },
-  settings: {
-    'import/internal-regex': '@(pdbnode|domain|infrastructure|interface)',
-    'json/ignore-files': ['**/package-lock.json'],
-    'json/json-with-comments-files': ['.vscode/**'],
-    'json/sort-package-json': 'standard',
+  extends: ['prettier', 'prettier/@typescript-eslint'],
+  parser: 'babel-eslint',
+  parserOptions: {
+    sourceType: 'module',
+    allowImportExportEverywhere: false,
+    ecmaFeatures: {
+      globalReturn: false,
+    },
+    babelOptions: {
+      configFile: 'path/to/config.js',
+    },
+  },
+  parserOptions: {
+    ecmaVersion: 8,
+    requireConfigFile: false,
+    sourceType: 'module',
+    ecmaFeatures: {
+      modules: true,
+      globalReturn: false,
+    },
+    plugins: ['@typescript-eslint', 'import', 'prettier'],
+    rules: {},
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
+    },
   },
 };

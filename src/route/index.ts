@@ -1,10 +1,9 @@
-import { error } from '@middleware';
-import { Router } from 'express';
+import {error} from '@/middleware/index';
+import {Router} from 'express';
+import rest from '@/route/rest';
 
-import rest from './rest';
+const router: Router = Router({caseSensitive: false});
 
-const router: Router = Router({ caseSensitive: true });
-
-router.use('/api/rest', rest, [error.restJson]);
+router.use('/api/rest', rest, [error.default]);
 
 export default router;

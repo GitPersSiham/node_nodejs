@@ -1,17 +1,13 @@
-import { ERROR } from '@const';
-import { BrandRepository } from '@repository';
-import { NextFunction, Request, Response } from 'express';
+import {Error} from '@/const/index';
+import BrandRepository from '@/repository/brand';
+import {NextFunction, Request, Response} from 'express';
 
-export async function getBrandById(
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> {
+export async function getBrandById(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const brandRepo = new BrandRepository();
     const data = await brandRepo.find(req.params.id);
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    next(ERROR.HTTP_500);
+    next(Error.HTTP_500);
   }
 }

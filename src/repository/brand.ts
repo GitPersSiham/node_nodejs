@@ -1,5 +1,4 @@
-import { Brand } from '@model';
+import Brand from '@/model/index';
+import {Repository} from './repository';
 
-import { Repository } from './repository';
-
-export class BrandRepository extends Repository<Brand> {}
+export default class BrandRepository extends Repository<Brand> {}

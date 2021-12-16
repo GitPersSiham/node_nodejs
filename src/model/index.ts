@@ -1,5 +1,3 @@
-export interface IModel {
-  serialize(): { [name: string]: string };
+export default interface IModel {
+  serialize(): {[name: string]: string};
 }
-
-export * from './brand';

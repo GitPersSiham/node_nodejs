@@ -4,49 +4,29 @@
     "outDir": "dist",
     "rootDir": "src",
     "module": "commonjs",
-    "target": "es6",
-    "noImplicitAny": true,
-    "removeComments": true,
     "esModuleInterop": true,
+    "target": "es6",
+    "declaration": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "isolatedModules": true,
-    "baseUrl": ".",
-    "sourceMap": true,
-    "skipLibCheck": true,
     "lib": [
       "es6"
     ],
     "types": [
       "node"
+    
     ],
+    "sourceMap": true,
+    "baseUrl": ".",
     "paths": {
-      "@const": [
-        "src/const/index"
-      ],
-      "@controller": [
-        "src/controller/index"
-      ],
-      "@middleware": [
-        "src/middleware/index"
-      ],
-      "@model": [
-        "src/model/index"
-      ],
-      "@repository": [
-        "src/repository/index"
-      ],
-      "@route": [
-        "src/route/index"
+      "@/*": [
+        "src/*"
       ],
       "*": [
         "node_modules/*"
       ]
     },
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
     "plugins": [
       {
         "transform": "@zerollup/ts-transform-paths",
@@ -57,11 +37,10 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src"
   ],
-  "exclude": [
-    "package",
-    "node_modules",
-    "**/node_modules"
-  ]
+  "typedocOptions": {
+    "mode": "modules",
+    "out": "docs"
+  }
 }

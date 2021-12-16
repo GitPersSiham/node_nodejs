@@ -1,6 +1,6 @@
-import { IModel } from './index';
+import IModel from '@/model/index';
 
-export class Brand implements IModel {
+export default class Brand implements IModel {
   #title: string;
 
   constructor(title: string) {
@@ -15,5 +15,7 @@ export class Brand implements IModel {
     this.#title = title.substring(0, 20);
   }
 
-  public serialize():{[name:string]:string}{return{title: this.#title}}
+  public serialize(): {[name: string]: string} {
+    return {title: this.#title};
+  }
 }

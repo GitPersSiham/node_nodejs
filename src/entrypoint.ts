@@ -1,25 +1,19 @@
-import { createServer, Server } from 'http';
-import { AddressInfo } from 'net';
+import {createServer, Server} from 'http';
+import {AddressInfo} from 'net';
 
-import { green } from 'chalk';
-import { config } from 'dotenv';
+import {green} from 'chalk';
+import {config} from 'dotenv';
 
-import application from './application';
+import application from '@/application';
 
 config();
 const server: Server = createServer(application);
 server
-  .listen({ host: process.env.APP_HOST, port: process.env.APP_PORT })
+  .listen({host: process.env.APP_HOST, port: process.env.APP_PORT})
   .on('listening', () => {
     const adressInfo: string | AddressInfo = server.address();
     console.log(
-      `🚀 HTTP Server started on ${green(
-        `http://${
-          typeof adressInfo === 'string'
-            ? adressInfo
-            : `${adressInfo.address}:${adressInfo.port}`
-        }`
-      )}`
+      `🚀 HTTP Server started on ${green(`http://${typeof adressInfo === 'string' ? adressInfo : `${adressInfo.address}:${adressInfo.port}`}`)}`,
     );
   })
   .on(
@@ -29,7 +23,7 @@ server
         address?: string;
         code: 'EACCES' | 'EADDRINUSE' | 'ECONNRESET';
         port?: number;
-      }
+      },
     ) => {
       switch (err.code) {
         case 'EACCES':
@@ -45,18 +39,18 @@ server
           console.log(err);
       }
       server.close();
-    }
+    },
   )
   .on('close', () => {
     process.exit(1);
   });
 
-process.on('uncaughtException', e => {
+process.on('uncaughtException', (e) => {
   console.error('Uncaught Exception', e);
   process.exit(1);
 });
 
-process.on('unhandledRejection', e => {
+process.on('unhandledRejection', (e) => {
   console.error('Unhandled Rejection', e);
   process.exit(1);
 });

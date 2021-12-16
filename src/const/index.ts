@@ -1,1 +1,1 @@
-export * as ERROR from './http_errors';
+export * as Error from '@/const/http_errors';
