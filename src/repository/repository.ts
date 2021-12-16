@@ -1,17 +1,17 @@
 import { IModel } from '@model';
-import { Requester } from '@types/requester';
+import axios, { AxiosPromise } from 'axios';
 
 export abstract class Repository<T extends IModel> {
-  #requester;
-
+  axios: any;
   constructor() {
     const path = this.constructor.name.replace('Repository', '').toLowerCase();
-    this.#requester = new Requester(`${process.env.API_URL}/${path}`);
+    console.log(path);
+    this.axios = axios(`${process.env.API_URL}/${path}`);
   }
 
   public async create(model: T): Promise<T> {
     try {
-      const data = await this.#requester.post(model.serialize());
+      const data = await this.axios.post(model.serialize());
       return Promise.resolve(<T>data);
     } catch (error) {
       return Promise.reject(error);
@@ -20,7 +20,7 @@ export abstract class Repository<T extends IModel> {
 
   public async findAll(): Promise<T[]> {
     try {
-      const data = await this.#requester.get();
+      const data = await this.axios.get();
       return Promise.resolve(<T[]>data);
     } catch (error) {
       return Promise.reject(error);
@@ -29,7 +29,7 @@ export abstract class Repository<T extends IModel> {
 
   public async find(id: string): Promise<T> {
     try {
-      const data = await this.#requester.get(id);
+      const data = await this.axios.get(id);
       return Promise.resolve(<T>data);
     } catch (error) {
       return Promise.reject(error);
