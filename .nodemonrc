@@ -6,7 +6,7 @@
   ],
   "verbose": true,
   "execMap": {
-    "ts": "babel-node --inspect=9229 --extensions=\".ts\" --config-file=\"{{pwd}}/.babelrc\""
+    "ts": "babel-node \".ts\" --config-file=\"{{pwd}}/.babelrc\""
   },
   "watch": [
     "src/"

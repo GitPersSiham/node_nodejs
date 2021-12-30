@@ -1,2 +1,2 @@
-export * from '@/repository/brand';
-export * from '@/repository/repository';
+export * from '../repository/brand';
+export * from '../repository/repository';

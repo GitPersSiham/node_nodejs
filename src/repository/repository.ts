@@ -1,38 +1,41 @@
-import IModel from '@/model/index';
-import requester from 'requester';
+import IModel from '../model/index';
+import axios from 'axios';
 
 export abstract class Repository<T extends IModel> {
-  request: any;
-  constructor() {
-    const path = this.constructor.name.replace('Repository', '').toLowerCase();
-    this.request = requester(`${process.env.API_URL}/${path}`);
+  constructor() {}
+
+  public create(model: T) {
+    axios
+      .post(`${process.env.API_URL}/brand`, model.serialize())
+      .then((resp) => {
+        console.log(resp.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
-  public async create(model: T): Promise<T> {
-    try {
-      const data = await this.request.post(model.serialize());
-      return Promise.resolve(<T>data);
-    } catch (error) {
-      return Promise.reject(error);
-    }
+  public findAll() {
+    axios
+      .get(`${process.env.API_URL}/brand`)
+      .then((resp) => {
+        const data = resp.data;
+        data.forEach((e) => {
+          console.log(`${e.title} `);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-
-  public async findAll(): Promise<T[]> {
-    try {
-      const data = await this.request.get();
-
-      return Promise.resolve(<T[]>data);
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }
-
-  public async find(id: string): Promise<T> {
-    try {
-      const data = await this.request.get(id);
-      return Promise.resolve(<T>data);
-    } catch (error) {
-      return Promise.reject(error);
-    }
+  public find(id: string) {
+    axios
+      .get(`${process.env.API_URL}/brand/${id}`)
+      .then((resp) => {
+        console.log(resp.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }

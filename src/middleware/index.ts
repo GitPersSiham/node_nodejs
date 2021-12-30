@@ -1,1 +1,1 @@
-export * as error from '@/middleware/error';
+export * as error from '../middleware/error';

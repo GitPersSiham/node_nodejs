@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   env: {
-    es2021: true,
+    es6: true,
     node: true,
     browser: true,
   },
@@ -21,12 +21,7 @@ module.exports = {
     },
   },
   parserOptions: {
-    ecmaVersion: 8,
-    requireConfigFile: false,
-    sourceType: 'module',
-    ecmaFeatures: {
-      modules: true,
-      globalReturn: false,
+   
     },
     plugins: ['@typescript-eslint', 'import', 'prettier'],
     rules: {},
@@ -38,4 +33,4 @@ module.exports = {
       },
     },
   },
-};
+}

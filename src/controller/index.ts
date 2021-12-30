@@ -1,1 +1,1 @@
-export * as brand from '@/controller/brand/index';
+export * as brand from '../controller/brand/index';

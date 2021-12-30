@@ -1,5 +1,5 @@
-import {Error} from '@/const/index';
-import BrandRepository from '@/repository/brand';
+import {Error} from '../../../const/index';
+import BrandRepository from '../../../repository/brand';
 import {NextFunction, Request, Response} from 'express';
 
 export async function getBrandById(req: Request, res: Response, next: NextFunction): Promise<void> {

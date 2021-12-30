@@ -1,11 +1,10 @@
 {
-  "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "esnext",
     "declaration": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -14,11 +13,12 @@
       "es6"
     ],
     "types": [
-      "node"
+      "node",
+      "typescript"
     
     ],
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
       "@/*": [
         "src/*"

@@ -1,15 +1,15 @@
+import {config} from 'dotenv';
 import {createServer, Server} from 'http';
 import {AddressInfo} from 'net';
 
 import {green} from 'chalk';
-import {config} from 'dotenv';
 
-import application from '@/application';
+import application from './application';
 
 config();
 const server: Server = createServer(application);
 server
-  .listen({host: process.env.APP_HOST, port: process.env.APP_PORT})
+  .listen({host: process.env.APP_HOST, port: process.env.PORT})
   .on('listening', () => {
     const adressInfo: string | AddressInfo = server.address();
     console.log(

@@ -1,6 +1,6 @@
-import {error} from '@/middleware/index';
+import {error} from '../middleware/index';
 import {Router} from 'express';
-import rest from '@/route/rest';
+import rest from '../route/rest';
 
 const router: Router = Router({caseSensitive: false});
 

@@ -1,4 +1,4 @@
-import IModel from '@/model/index';
+import IModel from '../model/index';
 
 export default class Brand implements IModel {
   #title: string;
