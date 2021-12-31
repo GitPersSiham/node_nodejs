@@ -15,7 +15,6 @@ application.use(
 // Set security & utilities
 application.use(helmet());
 application.use(express.json({limit: '50mb'}));
-/*app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))*/
 application.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 
 // Route handlers
