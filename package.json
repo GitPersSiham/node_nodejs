@@ -10,9 +10,8 @@
     "analysis:format": "prettier --check src/**/*.ts",
     "analysis:lint:eslint": "eslint --ignore-path .eslintignore --ext .js,.ts,.json ",
     "analysis:lint:types": "tsc --noEmit",
-    "dev": "npm-run-all --parallel dev:server devwatch dev:data",
+    "dev": "npm-run-all --parallel dev:data dev:server",
     "dev:data": "json-server --watch data/db.json --port 3000",
-    "devwatch": "ts-node-dev --respawn ./src/entrypoint.ts",
     "dev:server": "nodemon --exec babel-node ./src/entrypoint.ts --extensions .ts"
   },
   "dependencies": {
