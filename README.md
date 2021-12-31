@@ -11,7 +11,7 @@ $ npm install
 
 ```bash
 # development
-$ npm run dev 
+$ npm run dev (pour lancer json server qui écoute le port : 3000 et notre application qui ecoute le port : 3500)
 
 ```
 ## analysis
