@@ -8,8 +8,6 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
   },
-  extends: ['prettier', 'prettier/@typescript-eslint'],
-  parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module',
     allowImportExportEverywhere: false,
@@ -20,17 +18,14 @@ module.exports = {
       configFile: 'path/to/config.js',
     },
   },
-  parserOptions: {
-   
-    },
-    plugins: ['@typescript-eslint', 'import', 'prettier'],
-    rules: {},
-    settings: {
-      'import/resolver': {
-        node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
-}
+  plugins: ['@typescript-eslint', 'import', 'prettier'],
+  parser: '@babel/eslint-parser',
+  extends: ['plugin:@typescript-eslint/recommended', 'prettier', 'prettier/@typescript-eslint', 'plugin:import/typescript'],
+};
